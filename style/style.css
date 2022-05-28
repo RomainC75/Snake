@@ -1,0 +1,16 @@
+.game {
+  margin: 30px auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (5%)[20];
+  -ms-grid-columns: (5%)[20];
+      grid-template: repeat(20, 5%)/repeat(20, 5%);
+  width: 800px;
+  height: 800px;
+  border: 1px solid black;
+}
+
+.snake {
+  background-color: green;
+}
+/*# sourceMappingURL=style.css.map */

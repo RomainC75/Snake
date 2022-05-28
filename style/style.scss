@@ -1,0 +1,12 @@
+.game{
+    margin: 30px auto;
+    display:grid;
+    grid-template : repeat(20, 5%)/repeat(20, 5%);
+    width:800px;
+    height:800px;
+    border: 1px solid black;
+}
+
+.snake{
+    background-color:green;
+}
