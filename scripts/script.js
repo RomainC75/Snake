@@ -14,30 +14,24 @@ window.addEventListener('keydown',(e)=>{
 })
 
 const display = () =>{
-    // game.getCurrentBoard().flat().forEach( (unit, i) =>{
-    //     const div = gameBoard.querySelector(`div:nth-child(${i+1})`)
-    //     div.removeAttribute('class')
-    //     if(unit==1){
-    //         div.classList.add('snake')    
-    //         console.log('add snake')
-    //     }else if(unit==2){
-    //         div.classList.add('prey')
-    //     }
-    // })
+    console.log('--- New Display !!! --------------------------------------------------')
     let line = 0
+    
     for(let i=0 ; i<400 ; i++){
         line=Math.floor(i/20)
-        console.log(line)
         const div = gameBoard.querySelector(`div:nth-child(${i+1})`)
         div.removeAttribute('class')
         if(game.snake.positions.some(coords=>coords[0]===line&&coords[1]===i-(20*line))){
             div.classList.add('snake')    
-            console.log('add snake')
         }
     }
     const preyCoords=game.prey
-    const preyDive = gameBoard.querySelector(`div:nth-child(${preyCoords[0]*20+preyCoords[1]})`)
-    preyDive.classList.add('prey')
+    const preyDive = gameBoard.querySelector(`div:nth-child(${preyCoords[0]*20+preyCoords[1]+1})`)
+    if(!preyDive.classList.contains('snake')){
+        preyDive.classList.add('prey')
+    }
+    
+    
 }
 
 const start = () =>{
@@ -49,7 +43,7 @@ const start = () =>{
         }
         display()
         
-    },500)
+    },300)
 }
 
 display()
