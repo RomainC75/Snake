@@ -5,8 +5,15 @@
     width:800px;
     height:800px;
     border: 1px solid black;
+    & div{
+        border:1px dotted grey;
+    }
 }
 
 .snake{
     background-color:green;
+}
+
+.prey{
+    background-color:red;
 }
