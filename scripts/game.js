@@ -3,6 +3,7 @@ class Game {
         this.score=0
         this.prey=[]
         this.snake=new Snake()
+        this.score=0
     }
     getNewPrey(){
         let y=0
@@ -10,27 +11,23 @@ class Game {
         do{
             y=Math.floor(Math.random()*20)
             x=Math.floor(Math.random()*20)
-            //newPrey=[,]
         }while( this.snake.positions.some(position=>position[0]===y && position[1]===x ))    
-        // }while( !this.snake.positions.some(position=>position[0]===newPrey[0] && position[0]===newPrey[0] ))
-        console.log('-----NEW PREY-----',this.snake.positions , y,x)
         this.prey[0]=y
         this.prey[1]=x
     }
     nextStep(){
         this.snake.currentDirection=this.snake.nextDirection
-        console.log('---------')
-        console.log(this.snake.positions[0],this.prey)
-        console.log('----------')
+
         if(this.snake.positions[0][0]===this.prey[0] && this.snake.positions[0][1]===this.prey[1] ){
             this.snake.moveLengthen( true)
             this.getNewPrey()
+            this.score++
+            return true
         }else{
             this.snake.moveLengthen()
+            return false
         }
-        console.log('new Snake Position : ',this.snake.positions)
     }
-
     isGameLost(){
         console.log(this.snake.positions[0])
         return (this.snake.positions[0][0]===-1 
@@ -55,6 +52,5 @@ class Game {
         }else if(key==='ArrowRight'){
             this.snake.nextDirection = (this.snake.nextDirection+1)%4
         }
-        console.log('---->',this.snake.nextDirection)
     }
 }
